@@ -33,14 +33,17 @@ Joda Time - http://www.joda.org/joda-time/
 Version 2.9 tested and confirmed to work.
     
 ## Sample Usage
-Getting a list of shows with the search string "Silicon Valley" and displaying cast members.
+### Getting a list of shows with a search string and displaying cast members
 ```
     TVMaze api = new TVMaze();
 		List<Result<Show>> searchResults = api.searchShows("Silicon Valley");
 		for(Result<Show> result : searchResults) {
 			System.out.println(result.getItem().getName());
 			for(CastMember castmember : api.getCastForShow(result.getItem())) {
-				System.out.printf("\t%s as %s\n", castmember.getPerson().getName(), castmember.getCharacter().getName());
+				System.out.printf("\t%s as %s\n", 
+					castmember.getPerson().getName(), 
+					castmember.getCharacter().getName()
+				);
 			}
 		}
 ```
@@ -61,3 +64,19 @@ Silicon Valley
 Start-ups: Silicon Valley
 ```
 Note that there is no cast for "Start-ups: Silicon Valley".
+
+### Getting the first search result for a string with embedded next episode
+```
+		TVMaze api = new TVMaze();
+		Show show = api.searchSingleShow("Silicon Valley", Embeddable.SHOW.NEXT_EPISODE);
+		System.out.printf("%s - %s\n", show.getNetwork().getName(), show.getName());
+		System.out.printf("\tNext Episode: %s - %s", 
+			show.getNextepisode().getAirstamp().toDate(), 
+			show.getNextepisode().getName()
+		);
+```
+Above code will yield the following output:
+```
+HBO - Silicon Valley
+	Next Episode: Sun Jun 12 22:00:00 EDT 2016 - Bachman's Earning's Over-ride
+```
