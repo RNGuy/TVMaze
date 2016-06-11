@@ -80,3 +80,4 @@ Above code will yield the following output:
 HBO - Silicon Valley
 	Next Episode: Sun Jun 12 22:00:00 EDT 2016 - Bachman's Earning's Over-ride
 ```
+Note: Sample results were accurate as of June 11, 2016.
