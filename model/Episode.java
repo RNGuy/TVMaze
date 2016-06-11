@@ -55,16 +55,6 @@ public class Episode implements Comparable<Episode>, Serializable {
 	public DateTime getAirstamp() {
 		return airstamp;
 	}
-
-	// START Accerso modifications
-	public String getAlternateEpisodeIdentifier() {
-		return String.format("%dx%02d", season, number);
-	}
-
-	public String getEpisodeIdentifier() {
-		return String.format("S%02dE%02d", season, number);
-	}
-	// END Accerso modifications
 	
 	public int getId() {
 		return id;
