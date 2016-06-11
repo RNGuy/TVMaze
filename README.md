@@ -26,6 +26,11 @@ Comments & JavaDoc still needs to be added
       <scope>compile</scope>
     </dependency>
 ```
+
+## Other Dependencies
+Joda Time - http://www.joda.org/joda-time/
+
+Version 2.9 tested and confirmed to work.
     
 ## Sample Usage
 Getting a list of shows with the search string "Silicon Valley" and displaying cast members.
