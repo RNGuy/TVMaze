@@ -35,17 +35,17 @@ Version 2.9 tested and confirmed to work.
 ## Sample Usage
 ### Getting a list of shows with a search string and displaying cast members
 ```
-    TVMaze api = new TVMaze();
-		List<Result<Show>> searchResults = api.searchShows("Silicon Valley");
-		for(Result<Show> result : searchResults) {
-			System.out.println(result.getItem().getName());
-			for(CastMember castmember : api.getCastForShow(result.getItem())) {
-				System.out.printf("\t%s as %s\n", 
-					castmember.getPerson().getName(), 
-					castmember.getCharacter().getName()
-				);
-			}
-		}
+TVMaze api = new TVMaze();
+List<Result<Show>> searchResults = api.searchShows("Silicon Valley");
+for(Result<Show> result : searchResults) {
+	System.out.println(result.getItem().getName());
+	for(CastMember castmember : api.getCastForShow(result.getItem())) {
+		System.out.printf("\t%s as %s\n", 
+			castmember.getPerson().getName(), 
+			castmember.getCharacter().getName()
+		);
+	}
+}
 ```
 Above code will yield the following output:
 ```
@@ -67,13 +67,13 @@ Note that there is no cast for "Start-ups: Silicon Valley".
 
 ### Getting the first search result for a string with embedded next episode
 ```
-		TVMaze api = new TVMaze();
-		Show show = api.searchSingleShow("Silicon Valley", Embeddable.SHOW.NEXT_EPISODE);
-		System.out.printf("%s - %s\n", show.getNetwork().getName(), show.getName());
-		System.out.printf("\tNext Episode: %s - %s", 
-			show.getNextepisode().getAirstamp().toDate(), 
-			show.getNextepisode().getName()
-		);
+TVMaze api = new TVMaze();
+Show show = api.searchSingleShow("Silicon Valley", Embeddable.SHOW.NEXT_EPISODE);
+System.out.printf("%s - %s\n", show.getNetwork().getName(), show.getName());
+System.out.printf("\tNext Episode: %s - %s", 
+	show.getNextepisode().getAirstamp().toDate(), 
+	show.getNextepisode().getName()
+);
 ```
 Above code will yield the following output:
 ```
